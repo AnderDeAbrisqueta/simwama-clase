@@ -125,6 +125,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "simwama-clase:build:production",
+            "firebaseProject": "simwama-clase",
+            "firebaseHostingSite": "simwama-clase"
+          }
         }
       }
     }

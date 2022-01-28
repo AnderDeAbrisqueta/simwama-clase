@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "simwama-clase": {
+      "hosting": {
+        "simwama-clase": [
+          "simwama-clase"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "simwama-clase"
+  }
+}
