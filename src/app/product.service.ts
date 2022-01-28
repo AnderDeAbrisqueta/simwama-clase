@@ -29,7 +29,7 @@ export class ProductService {
   }
 
   async updateProduct(product: Product) {
-    await setDoc(doc(this.firestore, `product./${product.productId}`), product);
+    await setDoc(doc(this.firestore, `products/${product.productId}`), product);
   }
 
   getProduct(id: string): Observable<Product> {

@@ -14,12 +14,15 @@ export class AppComponent {
   products: Observable<Product[]>;
 
   productForm = new FormGroup({
+    productId: new FormControl(''),
     description: new FormControl(''),
     purchasePrice: new FormControl(0),
     salePrice: new FormControl(0),
     stock: new FormControl(0),
     picture: new FormControl('')
   })
+
+  formButtonText = 'Add product';
 
   constructor(public productService: ProductService) {
     this.products = this.productService.getProducts();
@@ -40,6 +43,24 @@ export class AppComponent {
   }
 
   showProduct(id: string) {
-    // this.productForm.value = this.productService.getProduct(id);
+    this.productService.getProduct(id).subscribe(data => this.productForm.patchValue(data));
+
+    this.formButtonText = "Update product";
+    
   }
+
+  updateProductButton() {
+    this.productService.updateProduct(this.productForm.value);
+  }
+
+
+  formSubmit() {
+    if(this.formButtonText === 'Add product') {
+      this.addProduct();
+    } else {
+      this.updateProductButton();
+    }
+  }
+
+  
 }
