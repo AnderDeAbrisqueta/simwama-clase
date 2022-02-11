@@ -1,4 +1,4 @@
-<form [formGroup]="productForm" (ngSubmit)="formSubmit()">
+<!-- <form [formGroup]="productForm" (ngSubmit)="formSubmit()">
   <label for="description">Description: </label>
   <input id="description" type="text" formControlName="description" />
   <br />
@@ -45,4 +45,39 @@
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->
+
+<p-table [value]="(products | async)!" responsiveLayout="scroll">
+  <ng-template pTemplate="caption" >
+      <div class="flex align-items-center justify-content-between">
+          SIMWAMA
+      </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+      <tr>
+          <th></th>
+          <th>Description</th>
+          <th>Purchase price</th>
+          <th>Sale price</th>
+          <th>Stock</th>
+          <th></th>
+          <th></th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-p>
+      <tr>
+        <td><img [src]="p.picture" width="60px" /></td>
+        <td>{{ p.description }}</td>
+        <td>{{ p.purchasePrice }}</td>
+        <td>{{ p.salePrice }}</td>
+        <td>{{ p.stock }}</td>
+        <td>
+            <button (click)="showProduct(p.productId)">Update</button>
+        </td>
+        <td>
+          <button (click)="productService.deleteProduct(p.productId)">X</button>
+        </td>
+      </tr>
+  </ng-template>
+</p-table>
+
