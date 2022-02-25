@@ -8,6 +8,7 @@ import {DialogModule} from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputNumberModule} from 'primeng/inputnumber';
+import {PanelModule} from 'primeng/panel'
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -38,7 +39,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DialogModule,
     BrowserAnimationsModule,
     InputTextModule,
-    InputNumberModule
+    InputNumberModule,
+    PanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]

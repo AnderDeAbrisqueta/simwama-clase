@@ -12,6 +12,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class AppComponent {
 
   displayProductForm: boolean = false;
+  displayConfirmDelete: boolean = false;
+  idForDeletion = '';
+  descriptionForDeletion = '';
 
   products: Observable<Product[]>;
 
@@ -62,9 +65,19 @@ export class AppComponent {
     } else {
       this.updateProductButton();
     }
+    this.displayProductForm = false;
   }
 
-  
+  confirmDeleteProduct(producto: Product) {
+    this.idForDeletion = producto.productId;
+    this.descriptionForDeletion = producto.description;
+    this.displayConfirmDelete = true;
+  }
+
+  deleteProduct() {
+    this.productService.deleteProduct(this.idForDeletion);
+    this.displayConfirmDelete = false;
+  }
 
   
 }
