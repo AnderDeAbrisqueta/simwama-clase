@@ -46,16 +46,16 @@
     </tr>
   </tbody>
 </table> -->
-
+<p-panel header="SINWAMA">
 <p-table
   [value]="(products | async)!"
   [paginator]="true"
   [rows]="2"
   responsiveLayout="scroll"
 >
-  <ng-template pTemplate="caption">
+  <!-- <ng-template pTemplate="caption">
     <div class="flex align-items-center justify-content-between">SIMWAMA</div>
-  </ng-template>
+  </ng-template> -->
   <ng-template pTemplate="header">
     <tr>
       <th></th>
@@ -63,6 +63,8 @@
       <th>Purchase price</th>
       <th>Sale price</th>
       <th>Stock</th>
+      <th></th>
+      <th></th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-p>
@@ -87,7 +89,7 @@
           type="button"
           icon="pi pi-trash"
           class="p-button-rounded"
-          (click)="productService.deleteProduct(p.productId)"
+          (click)="confirmDeleteProduct(p)"
         ></button>
       </td>
     </tr>
@@ -95,7 +97,7 @@
 </p-table>
 
 <div class="add-button">
-  <p-speedDial (click)="displayProductForm = true"></p-speedDial>
+  <p-speedDial (click)="displayProductForm = true" buttonClassName="p-button-warning"></p-speedDial>
 </div>
 
 <p-dialog [(visible)]="displayProductForm" [style]="{ width: '40vw' }">
@@ -106,27 +108,27 @@
 
       <div class="field">
         <label for="description">Description: </label>
-        <input pInputText id="description" type="text" formControlName="description" />
+        <input pInputText id="description" type="text" formControlName="description" class="inputfield w-full"/>
       </div>
       
       <div class="field">
         <label for="description">Purchase Price: </label>
-        <p-inputNumber [showButtons]="true" mode="currency" currency="EUR" id="purchasePrice" type="number" formControlName="purchasePrice"></p-inputNumber>
+        <input pInputText  mode="currency" currency="EUR" id="purchasePrice" type="number" formControlName="purchasePrice" class="inputfield w-full" />
       </div>
 
       <div class="field">
         <label for="description">Sale Price: </label>
-        <p-inputNumber [showButtons]="true" mode="currency" currency="EUR" id="salePrice" type="number" formControlName="salePrice"></p-inputNumber>
+        <input pInputText  mode="currency" currency="EUR" id="salePrice" type="number" formControlName="salePrice" class="inputfield w-full" />
       </div>
       
       <div class="field">
         <label for="description">Stock: </label>
-        <p-inputNumber [showButtons]="true" id="stock" type="number" formControlName="stock"></p-inputNumber>
+        <input pInputText  id="stock" type="number" formControlName="stock" class="inputfield w-full" />
       </div>
 
       <div class="field">
         <label for="description">Picture: </label>
-        <input pInputText id="picture" type="text" formControlName="picture"/>
+        <input pInputText id="picture" type="text" formControlName="picture" class="inputfield w-full"/>
       </div>
       
     </div>
@@ -146,3 +148,19 @@
   </form>
   
 </p-dialog>
+
+
+<!-- Delete confirmation dialog -->
+
+<p-dialog [(visible)]="displayConfirmDelete">
+  <div class="card">
+    Are you sure you want to delete product {{descriptionForDeletion}}?
+  </div>
+
+  <p-footer>
+    <p-button (click)="deleteProduct()" label="Yes"></p-button>
+    &nbsp;
+    <p-button (click)="displayConfirmDelete = false" label="No"></p-button>
+  </p-footer>
+</p-dialog>
+</p-panel>
