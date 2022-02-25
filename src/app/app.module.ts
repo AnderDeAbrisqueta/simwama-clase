@@ -3,6 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
+import {SpeedDialModule} from 'primeng/speeddial';
+import {DialogModule} from 'primeng/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {InputTextModule} from 'primeng/inputtext';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +33,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     provideStorage(() => getStorage()),
     ReactiveFormsModule,
     TableModule,
-    ButtonModule
+    ButtonModule,
+    SpeedDialModule,
+    DialogModule,
+    BrowserAnimationsModule,
+    InputTextModule,
+    InputNumberModule
   ],
   providers: [],
   bootstrap: [AppComponent]

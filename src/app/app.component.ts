@@ -11,6 +11,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class AppComponent {
 
+  displayProductForm: boolean = false;
+
   products: Observable<Product[]>;
 
   productForm = new FormGroup({
@@ -61,6 +63,8 @@ export class AppComponent {
       this.updateProductButton();
     }
   }
+
+  
 
   
 }
